@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v6.2.1/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'main/css/index.css' %}">
+    
+    <title>--</title>
+</head>
+<body>
+    <img class="bg__image" src="{% static 'main/images/bg.jpg' %}">
+    <div class="bg__mask"></div>
+    <div id="content">
+
+        {% if error %}
+            <p class="error_mes">入力に不備がありました。<br>再度正しく入力してください。</p>
+        {% endif %}
+        
+        <form action="{% url 'index' %}" method="POST">
+            {% csrf_token %}
+            <p class="form__date form__date--start">
+                <span>うまれた日</span>
+                <select name="start_year">
+                    {% for year in year_list %}                
+                    <option value="{{ year }}">{{ year }}</option>
+                    {% endfor %}
+                </select>
+                年
+                <select name="start_month">
+                    {% for month in month_list %}
+                    {% if month == 1 %}
+                    <option value="{{ month }}" selected>{{ month }}</option>
+                    {% else %}
+                    <option value="{{ month }}">{{ month }}</option>
+                    {% endif %}
+                    {% endfor %}
+                </select>
+                月
+                <select name="start_day">
+                    {% for day in day_list %}
+                    <option value="{{ day }}">{{ day }}</option>
+                    {% endfor %}
+                </select>
+                日
+            </p>
+            <p class="form__date form__date--end">
+                <span>とらえる日</span>
+                <select name="end_year">
+                    {% for year in year_list %}                
+                    <option value="{{ year }}">{{ year }}</option>
+                    {% endfor %}
+                </select>
+                年
+                <select name="end_month">
+                    {% for month in month_list %}
+                    {% if month == 1 %}
+                    <option value="{{ month }}" selected>{{ month }}</option>
+                    {% else %}
+                    <option value="{{ month }}">{{ month }}</option>
+                    {% endif %}
+                    {% endfor %}
+                </select>
+                月
+                <select name="end_day">
+                    {% for day in day_list %}
+                    <option value="{{ day }}">{{ day }}</option>
+                    {% endfor %}
+                </select>
+                日
+            </p>
+            <span class="textarea__descliption">どんな日でしたか？<i class="fa-solid fa-play"></i></span>
+            <textarea type="text" name="comment" rows="6"></textarea>
+            <input type="submit" value="計算" class="submit__btn">
+        </form>
+        <div id="result">
+            <p>
+                <span>おりなした日数</span><span class="result__day">{{ delta }}</span><span>日</span>
+            </p>
+        </div>
+        {% if delta %}
+        {% endif %}
+    </div>
+</body>
+</html>

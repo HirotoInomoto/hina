@@ -1,0 +1,29 @@
+<style>
+    table{
+        text-align: center;
+    }
+    th, td{
+        padding: 0 16px;
+        border-right: 1px solid #666;
+    }
+</style>
+<table>
+    <tr>
+        <th>日数</th>
+        <th>開始</th>
+        <!-- <th>開始コメント</th> -->
+        <th>終了</th>
+        <!-- <th>終了コメント</th> -->
+        <th>コメント</th>
+    </tr>
+    {% for log in log_list %}
+        <tr>
+            <td>{{ log.delta }}日</td>
+            <td>{{ log.start_date | date:"Y/m/d" }}</td>
+            <!-- <td>{{ log.start_date_comment }}</td> -->
+            <td>{{ log.end_date | date:"Y/m/d" }}</td>
+            <!-- <td>{{ log.end_date_comment }}</td> -->
+            <td>{{ log.comment }}</td>
+        </tr>
+    {% endfor %}
+</table>
