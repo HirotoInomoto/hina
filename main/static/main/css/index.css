@@ -97,7 +97,7 @@ textarea{
     margin: 4px auto 32px;
     background: none;
     border-radius: 4vw;
-    border: solid 2px #444;
+    border: solid 2px #000;
     padding: 2vw;
     font-size: 18px;
 }
@@ -107,10 +107,11 @@ textarea{
     display: block;
     background: none;
     padding: 8px 12px;
-    border: solid 2px #444;
+    border: solid 2px #000;
     border-radius: 3vw;
     font-size: 22px;
     font-weight: bold;
+    color: #000 !important;
 }
 
 #result{
@@ -140,6 +141,7 @@ textarea{
 .result__comment{
     width: 90vw;
     margin: 12px auto;
+    font-size: 18px;
 }
 
 .error_mes{
