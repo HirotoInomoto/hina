@@ -28,7 +28,7 @@
     height: 100%;
     width: 100%;
     z-index: 0;
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.25);
 }
 
 #content{
@@ -51,6 +51,7 @@
     justify-content: space-between;
     align-items: baseline;
     width: 96vw;
+    font-weight: bold;
 }
 
 .form__date--start{
@@ -67,14 +68,19 @@
 
 select{
     background: none;
-    border: none;
-    height: 32px;
+    border: none !important;
+    height: 36px;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    font-size: 32px;
+    font-size: 36px;
     text-align: right;
     overflow: visible !important;
+    color: #000 !important;
+}
+
+select:active{
+    border: none !important;
 }
 
 .textarea__descliption{
@@ -103,18 +109,37 @@ textarea{
     padding: 8px 12px;
     border: solid 2px #444;
     border-radius: 3vw;
-    font-size: 18px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+#result{
+    margin-top: 32px;
 }
 
 #result p{
-    text-align: center;
-    font-size: 24px;
-    margin: 32px auto 0;
+    margin: 12px auto;
 }
 
-.result__day{
+.result__date{
+    text-align: center;
+    font-size: 32px;
+}
+
+.result__days{
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.result__days__num{
     margin: 0 8px;
     font-size: 48px;
+}
+
+.result__comment{
+    width: 90vw;
+    margin: 12px auto;
 }
 
 .error_mes{

@@ -26,43 +26,73 @@
             <p class="form__date form__date--start">
                 <span>うまれた日</span>
                 <select name="start_year">
-                    {% for year in year_list %}                
-                    <option value="{{ year }}">{{ year }}</option>
-                    {% endfor %}
+                    {% if delta %}
+                        {% for year in year_list %}
+                            {% if year == start_date.year %}
+                                <option value="{{ year }}" selected>{{ year }}</option>
+                            {% else %}
+                                <option value="{{ year }}">{{ year }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    {% else %}
+                        {% for year in year_list %}
+                            {% if year == 1990 %}
+                                <option value="{{ year }}" selected>{{ year }}</option>
+                            {% else %}
+                                <option value="{{ year }}">{{ year }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
                 </select>
                 年
                 <select name="start_month">
-                    {% for month in month_list %}
-                    {% if month == 1 %}
-                    <option value="{{ month }}" selected>{{ month }}</option>
+                    {% if delta %}
+                        {% for month in month_list %}
+                            {% if month == start_date.month %}
+                                <option value="{{ month }}" selected>{{ month }}</option>
+                            {% else %}
+                                <option value="{{ month }}">{{ month }}</option>
+                            {% endif %}
+                        {% endfor %}
                     {% else %}
-                    <option value="{{ month }}">{{ month }}</option>
+                        {% for month in month_list %}
+                            <option value="{{ month }}">{{ month }}</option>
+                        {% endfor %}
                     {% endif %}
-                    {% endfor %}
                 </select>
                 月
                 <select name="start_day">
-                    {% for day in day_list %}
-                    <option value="{{ day }}">{{ day }}</option>
-                    {% endfor %}
+                    {% if delta %}
+                        {% for day in day_list %}
+                            {% if day == start_date.day %}
+                                <option value="{{ day }}" selected>{{ day }}</option>
+                            {% else %}
+                                <option value="{{ day }}">{{ day }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    {% else %}
+                        {% for day in day_list %}
+                            <option value="{{ day }}">{{ day }}</option>
+                        {% endfor %}
+                    {% endif %}
                 </select>
                 日
             </p>
             <p class="form__date form__date--end">
                 <span>とらえる日</span>
                 <select name="end_year">
-                    {% for year in year_list %}                
-                    <option value="{{ year }}">{{ year }}</option>
+                    {% for year in year_list %}
+                        {% if year == 1990 %}
+                            <option value="{{ year }}" selected>{{ year }}</option>
+                        {% else %}
+                            <option value="{{ year }}">{{ year }}</option>
+                        {% endif %}
                     {% endfor %}
                 </select>
                 年
                 <select name="end_month">
                     {% for month in month_list %}
-                    {% if month == 1 %}
-                    <option value="{{ month }}" selected>{{ month }}</option>
-                    {% else %}
-                    <option value="{{ month }}">{{ month }}</option>
-                    {% endif %}
+                        <option value="{{ month }}">{{ month }}</option>
                     {% endfor %}
                 </select>
                 月
@@ -77,12 +107,15 @@
             <textarea type="text" name="comment" rows="6"></textarea>
             <input type="submit" value="計算" class="submit__btn">
         </form>
-        <div id="result">
-            <p>
-                <span>おりなした日数</span><span class="result__day">{{ delta }}</span><span>日</span>
-            </p>
-        </div>
+
         {% if delta %}
+        <div id="result">
+            <p class="result__date"><span>{{ start_date|date:"Y/n/j" }}</span>～<span>{{ end_date|date:"Y/n/j" }}</span></p>
+            <p class="result__days">
+                <span>おりなした日数</span><span class="result__days__num">{{ delta }}</span><span>日</span>
+            </p>
+            <p class="result__comment">{{ comment }}</p>
+        </div>
         {% endif %}
     </div>
 </body>

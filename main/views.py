@@ -16,11 +16,11 @@ def index(request):
         day_list.append(i)
     
     if request.method == "POST":
-        print(request.POST)
         try:
             start_date = datetime.strptime(f'{request.POST["start_year"]}-{request.POST["start_month"]}-{request.POST["start_day"]}', "%Y-%m-%d")
             end_date = datetime.strptime(f'{request.POST["end_year"]}-{request.POST["end_month"]}-{request.POST["end_day"]}', "%Y-%m-%d")
-            delta = int(end_date - start_date) + 1
+            delta = end_date - start_date
+            delta = int(delta.days) + 1
             Log.objects.create(
                 start_date = start_date,
                 end_date = end_date,
@@ -32,6 +32,9 @@ def index(request):
                 "month_list": month_list,
                 "day_list": day_list,
                 "delta": delta,
+                "start_date": start_date,
+                "end_date": end_date,
+                "comment": request.POST["comment"],
             }
             return render(request, "main/index.html", params)
         except:
