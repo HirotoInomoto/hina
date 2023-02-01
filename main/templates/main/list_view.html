@@ -1,29 +1,44 @@
-<style>
-    table{
-        text-align: center;
-    }
-    th, td{
-        padding: 0 16px;
-        border-right: 1px solid #666;
-    }
-</style>
-<table>
-    <tr>
-        <th>日数</th>
-        <th>開始</th>
-        <!-- <th>開始コメント</th> -->
-        <th>終了</th>
-        <!-- <th>終了コメント</th> -->
-        <th>コメント</th>
-    </tr>
-    {% for log in log_list %}
-        <tr>
-            <td>{{ log.delta }}日</td>
-            <td>{{ log.start_date | date:"Y/m/d" }}</td>
-            <!-- <td>{{ log.start_date_comment }}</td> -->
-            <td>{{ log.end_date | date:"Y/m/d" }}</td>
-            <!-- <td>{{ log.end_date_comment }}</td> -->
-            <td>{{ log.comment }}</td>
-        </tr>
-    {% endfor %}
-</table>
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&display=swap" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v6.2.1/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'main/css/list_view.css' %}">
+    <style>
+        /* {% for log in log_list %} */
+        #list-{{log.id}}::before{
+            content: "{{ log.delta }}";
+        }
+        /* {% endfor %} */
+    </style>
+    <title>とらえる、おりなす</title>
+</head>
+<body>
+    <a href="{% url 'index' %}" class="back-btn">戻る</a>
+    <ul>
+        {% for log in log_list %}
+            <li id="list-{{ log.id }}"></li>
+        {% endfor %}
+    </ul>
+    <div id="popup">
+        <div class="popup__wrapper">
+            <p id="popup__delta">1234</p>
+            <p id="popup__days">1998/5/2～2023/2/1</p>
+            <p class="popup__text">入力したコメント・・・</p>
+            <p id="popup__comment">今日も陽菜はおなかを空かせながら作業をがんばっているらしい。今日は何を食べるのかなぁ。そんな陽菜が今日もかわいい。</p>
+        </div>
+    </div>
+    <script>
+        let popup = document.getElementById("popup");
+        document.getElementById("list-1").addEventListener("click", () => {
+            popup.style.display = "block";
+        })
+    </script>
+</body>
+</html>

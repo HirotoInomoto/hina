@@ -1,0 +1,120 @@
+html{
+    background-color: #c0dad9;
+}
+ul{
+    display: flex;
+    width: 90vw;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0;
+    margin: auto;
+}
+li{
+    position: relative;
+    background: #eee;
+    width: 33vw;
+    padding: 1.5em 1em;
+    transform: rotate(-2deg);
+    box-shadow: 1px 1px 4px rgb(0 0 0 / 20%);
+    color: #000;
+    list-style: none;
+    margin: 24px 0;
+    text-align: center;
+}
+li::before{
+    position: relative;
+    display: inline-block;
+    padding: 0 0.3em 0em 0.2em;
+    font-size: 42px;
+    font-weight: bold;
+    transform: rotate(-5deg);
+    font-family: 'Nothing You Could Do', cursive;
+}
+li::after{
+    content: '';
+    position: absolute;
+    left: 14vw;
+    top: -15px;
+    margin-left: 0;
+    width: 12vw;
+    height: 30px;
+    background: rgba(245,245,245,0.7);
+    box-shadow: 1px 1px 4px rgb(0 0 0 / 20%);
+    transform: rotate(-4deg);
+}
+
+.back-btn{
+    display: block;
+    position: fixed;
+    z-index: 10;
+    color: #000;
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 4px 8px;
+    font-size: 18px;
+    border-radius: 12px;
+    border: solid 1px #000;
+    font-family: 'Kosugi Maru', sans-serif;
+}
+
+#popup{
+    position: absolute;
+    top: 0;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.6);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: none;
+}
+.popup__wrapper{
+    position: relative;
+    background: #eee;
+    width: 80vw;
+    padding: 1.5em 1em;
+    transform: rotate(-2deg);
+    box-shadow: 1px 1px 4px rgb(0 0 0 / 20%);
+    color: #000;
+    list-style: none;
+    margin: 10vh auto 0;
+}
+.popup__wrapper::before{
+    position: relative;
+    display: inline-block;
+    padding: 0 0.3em 0em 0.2em;
+    font-size: 42px;
+    font-weight: bold;
+    transform: rotate(-5deg);
+    font-family: 'Nothing You Could Do', cursive;
+}
+.popup__wrapper::after{
+    content: '';
+    position: absolute;
+    left: 33vw;
+    top: -15px;
+    margin-left: 0;
+    width: 20vw;
+    height: 30px;
+    background: rgba(245,245,245,0.7);
+    box-shadow: 1px 1px 4px rgb(0 0 0 / 20%);
+    transform: rotate(-4deg);
+}
+#popup__delta{
+    font-family: 'Nothing You Could Do', cursive;
+    text-align: center;
+    font-size: 72px;
+    font-weight: bold;
+    margin: 0;
+}
+#popup__days{
+    text-align: center;
+    font-size: 24px;
+    margin: 0;
+    font-family: 'Kosugi Maru', sans-serif;
+}
+.popup__text{
+    font-family: 'Kosugi Maru', sans-serif;
+}
+#popup__comment{
+    font-family: 'Kosugi Maru', sans-serif;
+}
