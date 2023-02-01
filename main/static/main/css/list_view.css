@@ -107,7 +107,7 @@ li::after {
     right: 0;
     display: none;
     opacity: 0;
-    transition: .6s;
+    transition: .5s;
 }
 .popup__wrapper{
     /* position: relative;
