@@ -1,9 +1,8 @@
 from django.shortcuts import render
 from .models import Log
 from datetime import datetime
-# import dateutil.parser
+from django.contrib.auth.decorators import login_required
 
-# Create your views here.
 def index(request):
     year_list = []
     month_list = []
@@ -57,17 +56,18 @@ def index(request):
     }
     return render(request, "main/index.html", params)
 
+# @login_required
 def listView(request):
     return render(request, "main/list_view.html", {"log_list":Log.objects.all()})
 
-def result(request):
-    print(request.POST)
-    # delta = datetime.strptime(request.POST["end"], "%Y-%m-%d") - datetime.strptime(request.POST["start"], "%Y-%m-%d")
-    # delta = int(delta.days) + 1
-    # Log.objects.create(
-    #     start_date = datetime.strptime(request.POST["start"], "%Y-%m-%d"),
-    #     end_date = datetime.strptime(request.POST["end"], "%Y-%m-%d"),
-    #     comment = request.POST["comment"],
-    #     delta = delta,
-    # )
-    return render(request, "main/result.html", {"delta": delta})
+# def result(request):
+#     print(request.POST)
+#     # delta = datetime.strptime(request.POST["end"], "%Y-%m-%d") - datetime.strptime(request.POST["start"], "%Y-%m-%d")
+#     # delta = int(delta.days) + 1
+#     # Log.objects.create(
+#     #     start_date = datetime.strptime(request.POST["start"], "%Y-%m-%d"),
+#     #     end_date = datetime.strptime(request.POST["end"], "%Y-%m-%d"),
+#     #     comment = request.POST["comment"],
+#     #     delta = delta,
+#     # )
+#     return render(request, "main/result.html", {"delta": delta})

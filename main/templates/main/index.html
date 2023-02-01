@@ -9,8 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v6.2.1/css/all.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'main/css/index.css' %}">
-    
-    <title>--</title>
+    <title>とらえる、おりなす</title>
 </head>
 <body>
     <img class="bg__image" src="{% static 'main/images/bg.jpg' %}">
@@ -104,7 +103,7 @@
                 日
             </p>
             <span class="textarea__descliption">どんな日でしたか？<i class="fa-solid fa-play"></i></span>
-            <textarea type="text" name="comment" rows="6"></textarea>
+            <textarea type="text" name="comment" rows="4"></textarea>
             <input type="submit" value="計算" class="submit__btn">
         </form>
 
@@ -117,6 +116,14 @@
             <p class="result__comment">{{ comment }}</p>
         </div>
         {% endif %}
+
+        <a class="list__link" href="{% url 'list_view' %}">他の人のものを見る</a>
     </div>
+    <script>
+        history.pushState(null, null, location.href);
+        window.addEventListener('popstate', (e) => {
+            history.go(1);
+        });
+    </script>
 </body>
 </html>

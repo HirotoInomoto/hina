@@ -32,7 +32,7 @@
 }
 
 #content{
-    position: fixed;
+    position: relative;
     top: 0;
     bottom: 0;
     left: 0;
@@ -55,11 +55,11 @@
 }
 
 .form__date--start{
-    margin: 10vh auto 48px;
+    margin: 10vh auto 32px;
 }
 
 .form__date--end{
-    margin: 48px auto;
+    margin: 32px auto;
 }
 
 .form__date *{
@@ -100,6 +100,7 @@ textarea{
     border: solid 2px #000;
     padding: 2vw;
     font-size: 18px;
+    resize: none;
 }
 
 .submit__btn{
@@ -151,4 +152,18 @@ textarea{
     text-align: center;
     width: 100%;
     color: #f00;
+}
+
+.list__link{
+    margin: 23px auto 0;
+    display: block;
+    background: none;
+    padding: 8px 20px;
+    border: solid 2px #000;
+    border-radius: 3vw;
+    font-size: 18px;
+    font-weight: bold;
+    color: #000 !important;
+    width: max-content;
+    text-decoration: none;
 }
