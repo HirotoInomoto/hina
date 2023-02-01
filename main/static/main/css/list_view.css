@@ -9,7 +9,7 @@ ul{
     padding: 0;
     margin: auto;
 }
-li{
+/* li{
     position: relative;
     background: #eee;
     width: 33vw;
@@ -41,6 +41,46 @@ li::after{
     background: rgba(245,245,245,0.7);
     box-shadow: 1px 1px 4px rgb(0 0 0 / 20%);
     transform: rotate(-4deg);
+} */
+
+li {
+    position: relative;
+    box-shadow: 0 0 0 0.5rem #c8dde2;
+    border-left: 10px dotted white;
+    background: #eee;
+    width: 33vw;
+    padding: 1.5em 1em;
+    transform: rotate(-2deg);
+    box-shadow: 1px 1px 4px rgb(0 0 0 / 20%);
+    color: #000;
+    list-style: none;
+    margin: 24px 0;
+    text-align: center;
+    font-family: 'Nothing You Could Do', cursive;
+    font-size: 42px;
+    font-weight: bold;
+}
+
+li::before {
+    position: absolute;
+    top: 2.5rem;
+    left: 0.5rem;
+    width: calc(100% - 1rem);
+    height: calc(100% - 2rem);
+    background-image: repeating-linear-gradient(#bcbcbc 0 1px, transparent 1px 37px);
+    content: '';
+}
+
+li::after {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0;
+    width: 50%;
+    height: 20%;
+    box-shadow: 0 10px 15px #333;
+    transform: rotate(4deg);
+    content: '';
+    z-index: -1;
 }
 
 .back-btn{
@@ -117,4 +157,50 @@ li::after{
 }
 #popup__comment{
     font-family: 'Kosugi Maru', sans-serif;
+}
+
+.box {
+    position: relative;
+    padding: 0.5rem;
+    background-color: #eee;
+    box-shadow: 0 0 0 0.5rem #eee;
+    width: 33vw;
+    margin: 24px auto;
+    text-align: center;
+    font-size: 42px;
+    font-weight: bold;
+    font-family: 'Nothing You Could Do', cursive;
+}
+
+.box::after {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0;
+    width: 50%;
+    height: 20%;
+    box-shadow: 6px 15px 15px #333;
+    transform: rotate(4deg);
+    content: '';
+    z-index: -1;
+}
+
+/* .box:before {
+    content: " ";
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    border-width: 0 30px 30px 0;
+    border-style: solid;
+    width: 0;
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+    background: #e8ddbd;
+    border-color: #c0dad9 #c0dad9 #e8ddbd #e8ddbd;
+  } */
+
+.box p {
+    color: #333;
+    line-height: 1;
+    margin: 24px 0;
 }

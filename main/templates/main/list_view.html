@@ -11,19 +11,26 @@
     <link href="https://use.fontawesome.com/releases/v6.2.1/css/all.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'main/css/list_view.css' %}">
     <style>
-        /* {% for log in log_list %} */
+        /* {% comment %}
+        {% for log in log_list %}
         #list-{{log.id}}::before{
             content: "{{ log.delta }}";
         }
-        /* {% endfor %} */
+        {% endfor %}
+        {% endcomment %} */
     </style>
     <title>とらえる、おりなす</title>
 </head>
 <body>
     <a href="{% url 'index' %}" class="back-btn">戻る</a>
     <ul>
+        <!-- {% comment %}
         {% for log in log_list %}
             <li id="list-{{ log.id }}"></li>
+        {% endfor %}
+        {% endcomment %} -->
+        {% for log in log_list %}
+            <div class="box" id="list-{{ log.id }}"><p>{{ log.delta }}</p></div>
         {% endfor %}
     </ul>
     <div id="popup">
