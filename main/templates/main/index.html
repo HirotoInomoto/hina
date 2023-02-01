@@ -25,55 +25,25 @@
             <p class="form__date form__date--start">
                 <span>うまれた日</span>
                 <select name="start_year">
-                    {% if delta %}
-                        {% for year in year_list %}
-                            {% if year == start_date.year %}
-                                <option value="{{ year }}" selected>{{ year }}</option>
-                            {% else %}
-                                <option value="{{ year }}">{{ year }}</option>
-                            {% endif %}
-                        {% endfor %}
-                    {% else %}
-                        {% for year in year_list %}
-                            {% if year == 1990 %}
-                                <option value="{{ year }}" selected>{{ year }}</option>
-                            {% else %}
-                                <option value="{{ year }}">{{ year }}</option>
-                            {% endif %}
-                        {% endfor %}
-                    {% endif %}
+                    {% for year in year_list %}
+                        {% if year == 1990 %}
+                            <option value="{{ year }}" selected>{{ year }}</option>
+                        {% else %}
+                            <option value="{{ year }}">{{ year }}</option>
+                        {% endif %}
+                    {% endfor %}
                 </select>
                 年
                 <select name="start_month">
-                    {% if delta %}
-                        {% for month in month_list %}
-                            {% if month == start_date.month %}
-                                <option value="{{ month }}" selected>{{ month }}</option>
-                            {% else %}
-                                <option value="{{ month }}">{{ month }}</option>
-                            {% endif %}
-                        {% endfor %}
-                    {% else %}
-                        {% for month in month_list %}
-                            <option value="{{ month }}">{{ month }}</option>
-                        {% endfor %}
-                    {% endif %}
+                    {% for month in month_list %}
+                        <option value="{{ month }}">{{ month }}</option>
+                    {% endfor %}
                 </select>
                 月
                 <select name="start_day">
-                    {% if delta %}
-                        {% for day in day_list %}
-                            {% if day == start_date.day %}
-                                <option value="{{ day }}" selected>{{ day }}</option>
-                            {% else %}
-                                <option value="{{ day }}">{{ day }}</option>
-                            {% endif %}
-                        {% endfor %}
-                    {% else %}
-                        {% for day in day_list %}
-                            <option value="{{ day }}">{{ day }}</option>
-                        {% endfor %}
-                    {% endif %}
+                    {% for day in day_list %}
+                    <option value="{{ day }}">{{ day }}</option>
+                    {% endfor %}
                 </select>
                 日
             </p>
@@ -104,7 +74,7 @@
             </p>
             <span class="textarea__descliption">どんな日でしたか？<i class="fa-solid fa-play"></i></span>
             <textarea type="text" name="comment" rows="4"></textarea>
-            <input type="submit" value="計算" class="submit__btn">
+            <input type="submit" value="計算" class="submit__btn" id="submit__btn">
         </form>
 
         {% if delta %}
@@ -117,12 +87,37 @@
         </div>
         {% endif %}
 
-        <a class="list__link" href="{% url 'list_view' %}">他の人のものを見る</a>
+        <a class="list__link" href="{% url 'list_view' %}">他の人のとらえたものを見る</a>
     </div>
     <script>
         history.pushState(null, null, location.href);
         window.addEventListener('popstate', (e) => {
             history.go(1);
+        });
+        document.getElementById("submit__btn").addEventListener("click", () => {
+            let num_start_year = document.querySelector("select[name='start_year']").selectedIndex;
+            let num_start_month = document.querySelector("select[name='start_month']").selectedIndex;
+            let num_start_day = document.querySelector("select[name='start_day']").selectedIndex;
+            let num_end_year = document.querySelector("select[name='end_year']").selectedIndex;
+            let num_end_month = document.querySelector("select[name='end_month']").selectedIndex;
+            let num_end_day = document.querySelector("select[name='end_day']").selectedIndex;
+            localStorage.setItem("start_year",document.querySelector("select[name='start_year']").options[num_start_year].value);
+            localStorage.setItem("start_month",document.querySelector("select[name='start_month']").options[num_start_month].value);
+            localStorage.setItem("start_day",document.querySelector("select[name='start_day']").options[num_start_day].value);
+            localStorage.setItem("end_year",document.querySelector("select[name='end_year']").options[num_end_year].value);
+            localStorage.setItem("end_month",document.querySelector("select[name='end_month']").options[num_end_month].value);
+            localStorage.setItem("end_day",document.querySelector("select[name='end_day']").options[num_end_day].value);
+        })
+        document.addEventListener('DOMContentLoaded', function() {
+            try{
+                document.querySelector(`select[name='start_year'] option[value='${localStorage.getItem("start_year")}']`).setAttribute("selected", true);
+                document.querySelector(`select[name='start_month'] option[value='${localStorage.getItem("start_month")}']`).setAttribute("selected", true);
+                document.querySelector(`select[name='start_day'] option[value='${localStorage.getItem("start_day")}']`).setAttribute("selected", true);
+                document.querySelector(`select[name='end_year'] option[value='${localStorage.getItem("end_year")}']`).setAttribute("selected", true);
+                document.querySelector(`select[name='end_month'] option[value='${localStorage.getItem("end_month")}']`).setAttribute("selected", true);
+                document.querySelector(`select[name='end_day'] option[value='${localStorage.getItem("end_day")}']`).setAttribute("selected", true);
+            }
+            catch{;}
         });
     </script>
 </body>
