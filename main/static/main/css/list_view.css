@@ -157,6 +157,7 @@ li::after {
 }
 #popup__comment{
     font-family: 'Kosugi Maru', sans-serif;
+    line-height: 1.4;
 }
 
 .box {
@@ -183,24 +184,19 @@ li::after {
     content: '';
     z-index: -1;
 }
-
-/* .box:before {
-    content: " ";
-    display: block;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    border-width: 0 30px 30px 0;
-    border-style: solid;
-    width: 0;
-    -webkit-transform: rotate(90deg);
-    transform: rotate(90deg);
-    background: #e8ddbd;
-    border-color: #c0dad9 #c0dad9 #e8ddbd #e8ddbd;
-  } */
-
 .box p {
     color: #333;
     line-height: 1;
     margin: 24px 0;
+}
+
+#delete-btn{
+    margin: 64px auto 0;
+    width: max-content;
+    border: solid 2px #fff;
+    padding: 8px 12px;
+    font-size: 18px;
+    border-radius: 8px;
+    color: #fff;
+    font-family: 'Kosugi Maru', sans-serif;
 }

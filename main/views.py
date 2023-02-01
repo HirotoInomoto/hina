@@ -58,7 +58,7 @@ def index(request):
 
 # @login_required
 def listView(request):
-    return render(request, "main/list_view.html", {"log_list":Log.objects.all()})
+    return render(request, "main/list_view.html", {"log_list":Log.objects.all().order_by("-pub_date")})
 
 # def result(request):
 #     print(request.POST)
