@@ -98,7 +98,7 @@ li::after {
 }
 
 #popup{
-    position: absolute;
+    position: fixed;
     top: 0;
     z-index: 100;
     background-color: rgba(0, 0, 0, 0.6);
@@ -106,9 +106,11 @@ li::after {
     left: 0;
     right: 0;
     display: none;
+    opacity: 0;
+    transition: .3s;
 }
 .popup__wrapper{
-    position: relative;
+    /* position: relative;
     background: #eee;
     width: 80vw;
     padding: 1.5em 1em;
@@ -116,9 +118,19 @@ li::after {
     box-shadow: 1px 1px 4px rgb(0 0 0 / 20%);
     color: #000;
     list-style: none;
-    margin: 10vh auto 0;
+    margin: 10vh auto 0; */
+    position: relative;
+    padding: 0.5rem;
+    background-color: #eee;
+    box-shadow: 0 0 0 0.5rem #eee;
+    width: 70vw;
+    margin: 120px auto 0;
+    /* text-align: center; */
+    /* font-size: 42px;
+    font-weight: bold;
+    font-family: 'Nothing You Could Do', cursive; */
 }
-.popup__wrapper::before{
+/* .popup__wrapper::before{
     position: relative;
     display: inline-block;
     padding: 0 0.3em 0em 0.2em;
@@ -126,9 +138,9 @@ li::after {
     font-weight: bold;
     transform: rotate(-5deg);
     font-family: 'Nothing You Could Do', cursive;
-}
+} */
 .popup__wrapper::after{
-    content: '';
+    /* content: '';
     position: absolute;
     left: 33vw;
     top: -15px;
@@ -137,7 +149,16 @@ li::after {
     height: 30px;
     background: rgba(245,245,245,0.7);
     box-shadow: 1px 1px 4px rgb(0 0 0 / 20%);
-    transform: rotate(-4deg);
+    transform: rotate(-4deg); */
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0;
+    width: 50%;
+    height: 20%;
+    box-shadow: 6px 15px 15px #333;
+    transform: rotate(4deg);
+    content: '';
+    z-index: -1;
 }
 #popup__delta{
     font-family: 'Nothing You Could Do', cursive;

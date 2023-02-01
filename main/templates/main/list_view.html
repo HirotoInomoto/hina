@@ -56,15 +56,20 @@
         let delete_btn = document.getElementById('delete-btn');
         card_list.forEach(element => {
             element.addEventListener("click", () => {
-                console.log(log_list[parseInt(element.id.substr(5)) - 1][1])
                 popup__delta.innerText = log_list[parseInt(element.id.substr(5)) - 1][1];
                 popup__days.innerText = log_list[parseInt(element.id.substr(5)) - 1][2] + "～" + log_list[parseInt(element.id.substr(5)) - 1][3];
                 popup__comment.innerText = log_list[parseInt(element.id.substr(5)) - 1][4];
                 popup.style.display = "block";
+                setTimeout(() => {
+                    popup.style.opacity = 1;
+                }, 10)
             })
         });
         delete_btn.addEventListener("click", () => {
-            popup.style.display = "none";
+            popup.style.opacity = 0;
+            setTimeout(() => {
+                popup.style.display = "none";
+            }, 300)
         })
     </script>
 </body>
