@@ -3,7 +3,7 @@ html{
 }
 ul{
     display: flex;
-    width: 90vw;
+    width: 86vw;
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 0;
@@ -107,7 +107,7 @@ li::after {
     right: 0;
     display: none;
     opacity: 0;
-    transition: .3s;
+    transition: .6s;
 }
 .popup__wrapper{
     /* position: relative;
@@ -187,7 +187,7 @@ li::after {
     background-color: #eee;
     box-shadow: 0 0 0 0.5rem #eee;
     width: 33vw;
-    margin: 24px auto;
+    margin: 24px 0;
     text-align: center;
     font-size: 42px;
     font-weight: bold;
