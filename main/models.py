@@ -11,4 +11,4 @@ class Log(models.Model):
     # end_date_comment = models.CharField("いつまで・コメント", max_length=300, null=True, blank=True)
 
     def __str__(self):
-        return self.comment
+        return f"{self.delta} - {self.comment}"
