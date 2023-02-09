@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>とらえる、おりなす</title>
+</head>
+<body>
+    <a href="{% url 'admin_list' %}">見やすいリストへ</a>
+    <table>
+        <tr>
+            <th>投稿日時</th>
+            <th>日数</th>
+            <th>いつから</th>
+            <th>いつまで</th>
+            <th>コメント</th>
+        </tr>
+        {% for log in log_list %}
+        <tr>
+            <td>{{ log.pub_date|date:"Y/n/j G:i" }}</td>
+            <td>{{ log.delta }}日</td>
+            <td>{{ log.start_date|date:"Y/n/j" }}</td>
+            <td>{{ log.end_date|date:"Y/n/j" }}</td>
+            <td>{{ log.comment }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

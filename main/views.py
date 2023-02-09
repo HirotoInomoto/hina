@@ -71,3 +71,11 @@ def listView(request):
 #     #     delta = delta,
 #     # )
 #     return render(request, "main/result.html", {"delta": delta})
+
+@login_required
+def admin_list(request):
+    return render(request, "main/admin_list.html", {"log_list":Log.objects.all().order_by("-pub_date")})
+    
+@login_required
+def admin_table(request):
+    return render(request, "main/admin_table.html", {"log_list":Log.objects.all().order_by("-pub_date")})
